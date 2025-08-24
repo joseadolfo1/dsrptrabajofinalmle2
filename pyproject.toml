@@ -17,10 +17,12 @@ classifiers = [
 ]
 dependencies = [
     "dagshub>=0.6.3",
+    "feast>=0.49.0",
     "ipython",
     "ipywidgets>=8.1.7",
     "jupyterlab",
     "jupyterlab-widgets>=3.0.15",
+    "loguru>=0.7.3",
     "matplotlib",
     "mlflow>=2,<3",
     "notebook",
