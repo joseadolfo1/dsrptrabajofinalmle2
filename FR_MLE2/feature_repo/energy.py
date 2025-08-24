@@ -1,61 +1,59 @@
 import pandas as pd
+import sys
+
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2])) 
+from packageDsrpMLE2.config import PARQUET_PATH
+
+
 from feast import (
     Entity,
     FeatureView,
     FileSource,
     Field,
-    RequestSource,
     FeatureService,
  )
 
-from feast.types import String, Float64
+from feast.types import String, Float64, UnixTimestamp
 from feast.on_demand_feature_view import on_demand_feature_view 
 
 # 1)Entidad
-energy_consumption = Entity(name="energy_consumption", join_keys=["energy_consumption_id"])
-
+energy = Entity(name="energy", join_keys=["energy_id"])
 
 # 2) Origen de datos
-energy_consumption_source = FileSource(
-    name="energy_consumption_source",
-    path="./data/ec_ft.parquet",
+energy_source = FileSource(
+    name="energy_source",
+    path=str(PARQUET_PATH),
     event_timestamp_column="Datetime",
 )
 
 # 3) Vista de características
-energy_consumption_view = FeatureView(
-    name="energy_consumption_view",
-    entities=[energy_consumption],
+energy_view = FeatureView(
+    name="energy_view",
+    entities=[energy],
     schema=[
         Field(name="PJME_MW", dtype=Float64, description="This is a energy consumption"),
+        Field(name="Datetime", dtype=UnixTimestamp),
     ],
-    source=energy_consumption_source,
+    source=energy_source,
 )
-
-"""
-# 4) RequestSource renombrado para no colisionar
-input_req = RequestSource(
-    name="input_request",
-    schema=[
-        Field(name="y", dtype=Float64),
-    ],
-)
-"""
 
 # 5) On‑demand feature view con nombre y firma corregida
 @on_demand_feature_view(
-    name="ec_feature_view",
-    sources=[energy_consumption_view],
+    name="energy_feature_view",
+    sources=[energy_view],
     schema=[
         Field(name="y", dtype=Float64),
+        Field(name="ds", dtype=UnixTimestamp),
     ],
 )
-def ec_feature_view(input_df: pd.DataFrame) -> pd.DataFrame:
+def energy_feature_view(input_df: pd.DataFrame) -> pd.DataFrame:
     df = pd.DataFrame()
-    df["y"] = input_df["PJME_MW"] / 1000    
+    df["y"] = input_df["PJME_MW"] / 1000.0
+    df["ds"] = input_df["Datetime"]
     return df
 
 dsrp_feature_service = FeatureService(
     name="dsrp_feature_service",
-    features=[energy_consumption_view, ec_feature_view],
+    features=[energy_view, energy_feature_view],
     )
