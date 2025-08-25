@@ -97,8 +97,6 @@ Se entrenan los modelos Prophet, ExponentialSmoothing (ETS) y XGBRegressor
 
 ## Visualización del dataset
 
-Metrica RSME de los modelos entrenados.
-
 ![dataset](./reports/figures/dataset.png)
 
 
