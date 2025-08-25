@@ -59,4 +59,56 @@ Este es el trabajo final del modulo MLE2 del programa de epecializado en Machine
 
 --------
 
-# dsrptrabajofinalmle2
+##  Problema de ML
+Se busca predecir el consumo energetico de la empresa PJM Interconnection LLC. Empresa de energis de USA.
+
+## Diagrama de flujo del proyecto
+
+
+## Diccionario de datos
+
+|  cabecera      |tipo         | descripcion |
+|----------------|-------------|-------------|
+|**Datetime**  |timestamp      |marca de tiempo con una granularidad de 1h|
+|**PJME_MW**  |float      |consumo energetico en Megawatts (MW)|
+
+# Model Card
+
+## Metadata
+
+- **Library**: scikit-learn, feast, prophet, statsmodels, xgboost, ExponentialSmoothing
+- **Tags**: # Serie Temporal
+
+## Authors
+
+- José Adolfo Cusihuallpa
+
+## Framework
+
+scikit-learn, JupiterLab, Feast
+
+## Intended Uses
+
+El trabajo pretende hacer la prediccion del consumo electrico de la empresa PJM.
+
+## Model Description
+
+Se entrenan los modelos Prophet, ExponentialSmoothing (ETS) y XGBRegressor
+
+## Visualización del dataset
+
+Metrica RSME de los modelos entrenados.
+
+![dataset](./reports/figures/dataset.png)
+
+
+## Resultados
+Comparacion de la metrica RMSE de los modelos.
+
+![RMSE](./reports/figures/RMSE.png)
+
+
+
+## Conclusiones
+
+De los resultados de ambos modelos se ve que el Modelo Trabajado con Regresor Logistico presenta mejores resultados que al que se entreno con PCA+KMeans. Esto no nesesariamente indica que no se pueda aplicar PCA+KMeans al dataset de este trabajo, el mal resultado del segundo modelo puede ser por que no se aplicaron mas etapas previas de preprocesamiento de la data asi tambien como elegir otros valoroes de los hiperparametros.
