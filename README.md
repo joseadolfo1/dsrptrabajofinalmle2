@@ -97,7 +97,7 @@ Se entrenan los modelos Prophet, ExponentialSmoothing (ETS) y XGBRegressor
 
 ## Visualización del dataset
 
-![dataset](./reports/figures/dataset.png)
+![dataset](./reports/figures/dataset_pre_feast.png)
 
 
 ## Resultados
@@ -109,4 +109,4 @@ Comparacion de la metrica RMSE de los modelos.
 
 ## Conclusiones
 
-De los resultados de ambos modelos se ve que el Modelo Trabajado con Regresor Logistico presenta mejores resultados que al que se entreno con PCA+KMeans. Esto no nesesariamente indica que no se pueda aplicar PCA+KMeans al dataset de este trabajo, el mal resultado del segundo modelo puede ser por que no se aplicaron mas etapas previas de preprocesamiento de la data asi tambien como elegir otros valoroes de los hiperparametros.
+De los resultados obtenidos el modelo con mejores metricas resulta ser el XGBOOST, sin embargo, cuanto menos esto nos lleva a levantar una ceja ya que es posible que se haya presentado un data leakage en el modelo por la precision de sus predicciones.
