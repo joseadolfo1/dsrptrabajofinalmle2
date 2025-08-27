@@ -63,7 +63,7 @@ Este es el trabajo final del modulo MLE2 del programa de epecializado en Machine
 Se busca predecir el consumo energetico de la empresa PJM Interconnection LLC. Empresa de energis de USA.
 
 ## Diagrama de flujo del proyecto
-
+![Diagrama de Flujo](./reports/figures/DF_MLE2.png)
 
 ## Diccionario de datos
 
@@ -102,6 +102,8 @@ Se entrenan los modelos Prophet, ExponentialSmoothing (ETS) y XGBRegressor
 
 ## Resultados
 Comparacion de la metrica RMSE de los modelos.
+
+Resultado en Dagshub/MLFlow: https://dagshub.com/joseadolfo1/dsrptrabajofinalmle2/experiments
 
 ![RMSE](./reports/figures/RMSE.png)
 
