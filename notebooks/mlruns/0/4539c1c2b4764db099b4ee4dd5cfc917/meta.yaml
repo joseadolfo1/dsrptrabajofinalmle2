@@ -1,0 +1,15 @@
+artifact_uri: file:///home/joe/Documents/dsrptrabajofinalmle2/notebooks/mlruns/0/4539c1c2b4764db099b4ee4dd5cfc917/artifacts
+end_time: 1756163657441
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4539c1c2b4764db099b4ee4dd5cfc917
+run_name: XGBOOST
+run_uuid: 4539c1c2b4764db099b4ee4dd5cfc917
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756163657432
+status: 4
+tags: []
+user_id: joe
